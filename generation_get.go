@@ -25,5 +25,5 @@ type Generation struct {
 //
 //	gen1, err := sdk.GetGeneration(ctx, "generation-i")
 func (s *SDK) GetGeneration(ctx context.Context, name string) (*Generation, error) {
-	return Follow[Generation](ctx, s, s.baseURL+"/api/v2/pokemon/"+name)
+	return Follow[Generation](ctx, s, s.baseURL+"/api/v2/generation/"+name)
 }
