@@ -1,5 +1,7 @@
 # Pokemon API SDK for Go
 
+[![CI](https://github.com/danielgtaylor/pokesdk/workflows/CI/badge.svg?branch=main)](https://github.com/danielgtaylor/pokesdk/actions?query=workflow%3ACI+branch%3Amain++) [![codecov](https://codecov.io/gh/danielgtaylor/pokesdk/branch/main/graph/badge.svg)](https://codecov.io/gh/danielgtaylor/pokesdk) [![Docs](https://godoc.org/github.com/danielgtaylor/pokesdk?status.svg)](https://pkg.go.dev/github.com/danielgtaylor/pokesdk?tab=doc) [![Go Report Card](https://goreportcard.com/badge/github.com/danielgtaylor/pokesdk)](https://goreportcard.com/report/github.com/danielgtaylor/pokesdk)
+
 This is a Go SDK for the [Pokémon API](https://pokeapi.co/).
 
 ## Installation

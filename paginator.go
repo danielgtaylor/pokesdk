@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"sync"
 )
 
 // DefaultPageBufferSize is the size of the channel holding page items. When
@@ -88,13 +89,17 @@ func (p *Paginator[T]) AllWithCancel(ctx context.Context) (chan IteratorResult[T
 	ch := make(chan IteratorResult[T], DefaultPageBufferSize)
 	done := make(chan struct{}, 1)
 	closed := false
+	mu := sync.Mutex{}
 
 	go func() {
 		defer close(ch)
 		defer func() {
+			mu.Lock()
 			if !closed {
+				closed = true
 				close(done)
 			}
+			mu.Unlock()
 		}()
 
 		index := 0
@@ -121,7 +126,11 @@ func (p *Paginator[T]) AllWithCancel(ctx context.Context) (chan IteratorResult[T
 	}()
 
 	return ch, func() {
-		closed = true
-		close(done)
+		mu.Lock()
+		if !closed {
+			closed = true
+			close(done)
+		}
+		mu.Unlock()
 	}
 }

@@ -1,3 +1,23 @@
+// Package pokesdk provides a simple SDK for the Pokemon API.
+//
+//	ctx := context.Background()
+//	sdk := pokesdk.New(pokesdk.Config{})
+//
+//	// Print pokemon names.
+//	for result := range sdk.ListPokemon().All(ctx) {
+//		if result.Error != nil {
+//			log.Fatalf("Failed to list Pokemon: %v", result.Error)
+//		}
+//		fmt.Printf("Pokemon: %s\n", result.Value.Name)
+//	}
+//
+//	// Print Pikachu's stat details.
+//	pika, err := sdk.GetPokemon(ctx, "pikachu")
+//	if err != nil {
+//		panic(err)
+//	}
+//	fmt.Println("Pikachu stats:")
+//	fmt.Println(pika.Stats)
 package pokesdk
 
 import (
